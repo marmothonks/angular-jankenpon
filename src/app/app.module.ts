@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
@@ -23,10 +24,23 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     ArenaComponent,
     LoginComponent
+=======
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+>>>>>>> 1952e5cd8c52369ce0437287027499e69ccb4be5
   ],
   imports: [
     BrowserModule,
     FormsModule,
+<<<<<<< HEAD
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -36,6 +50,9 @@ import { LoginComponent } from './login/login.component';
     MatFormFieldModule,
     MatInputModule,
     MatProgressSpinnerModule
+=======
+    HttpModule
+>>>>>>> 1952e5cd8c52369ce0437287027499e69ccb4be5
   ],
   providers: [],
   bootstrap: [AppComponent]
