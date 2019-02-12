@@ -1,0 +1,51 @@
+<mat-grid-list cols="2" rowHeight="300px" class="arena mdc-layout-grid--align-center">
+  <mat-grid-tile>
+    <mat-card class="arena-card">
+      <mat-card-header>
+        <mat-card-title>{{userService.getCurrentUser()}}</mat-card-title>
+        <mat-card-subtitle>Points :{{scoreService.latestScore().playerScore}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <h3> Choose your weapon: </h3>
+        <div>
+          <button mat-fab *ngFor="let sign of signs" (click)="onSelect(sign)" class="weapon">
+            <i [ngClass]="['far', 'fa-hand-'+sign.name]"></i>
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="arena-card">
+      <mat-card-header>
+        <mat-card-title>Opponent</mat-card-title>
+        <mat-card-subtitle>Points :{{scoreService.latestScore().opponentScore}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="opponentSign">
+          <h3></h3>
+          <button mat-fab class="weapon">
+            <i [ngClass]="['far', 'fa-hand-'+opponentSign.name]"></i>
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2" class="mdc-layout-grid--align-center">
+    <div class="results" *ngIf="showResult && opponentSign" class="flex-container flex-center" style="flex-direction: column">
+      <div [ngSwitch]="result">
+        <ng-template [ngSwitchCase]="1">
+          <h1> You're the winner! </h1>
+        </ng-template>
+        <ng-template [ngSwitchCase]="0">
+          <h1>It's a tie! </h1>
+        </ng-template>
+        <ng-template ngSwitchDefault>
+          <h1> You lose. </h1>
+        </ng-template>
+      </div>
+      <p> Pick again to continue or </p>
+      <button (click)="logOut()" mat-raised-button color="primary"> Stop</button>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

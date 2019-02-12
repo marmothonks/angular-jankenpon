@@ -1,0 +1,27 @@
+<mat-grid-list cols="10" class="mdc-layout-grid--align-center">
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile colspan="8" class="mdc-layout-grid--align-center ">
+    <h3>Please tell us your name to start playing !!</h3>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="8" class="mdc-layout-grid--align-center ">
+    <form layout-align="center center" class="login-form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <mat-form-field class="login-full-width">
+        <input matInput placeholder="Your Name" required minlength="3" 
+        [(ngModel)]="playerName" #name="ngModel" autofocus name="playerName">
+      </mat-form-field>
+      <button *ngIf="name.valid"  mat-raised-button>Start Playing</button>
+    </form>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="8" class="mdc-layout-grid--align-center ">
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+      <div *ngIf="name.errors.required">
+        Name is required.
+      </div>
+      <div *ngIf="name.errors.minlength">
+        Name must be at least 3 characters long.
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+</mat-grid-list>
